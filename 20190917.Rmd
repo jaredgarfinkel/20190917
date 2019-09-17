@@ -7,15 +7,15 @@ output: html_document
 
 ## Data Wrangling I
 
-```{r}
+```{r load library}
 library(tidyverse)
 ```
 
 ## Load in a dataset
 
-```{r}
+```{r read in a dataset}
 ## reads in a dataset
 litters_data = read_csv(file = "./data_import_examples/data_import_examples/FAS_litters.csv")
-
+litters_data = janitor::clean_names(litters_data)
 ```
 
