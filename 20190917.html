@@ -396,6 +396,17 @@ litters_data = read_csv(file = &quot;./data_import_examples/data_import_examples
 ##   `Pups dead @ birth` = col_double(),
 ##   `Pups survive` = col_double()
 ## )</code></pre>
+<pre class="r"><code>litters_data = janitor::clean_names(litters_data)</code></pre>
+<pre class="r"><code>fas_pups = read_csv(file = &quot;./data_import_examples/data_import_examples/FAS_pups.csv&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   `Litter Number` = col_character(),
+##   Sex = col_double(),
+##   `PD ears` = col_double(),
+##   `PD eyes` = col_double(),
+##   `PD pivot` = col_double(),
+##   `PD walk` = col_double()
+## )</code></pre>
 </div>
 
 
