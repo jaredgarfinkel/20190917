@@ -9,6 +9,7 @@ output: html_document
 
 ```{r load library}
 library(tidyverse)
+library(readxl)
 ```
 
 ## Load in a dataset
@@ -19,7 +20,23 @@ litters_data = read_csv(file = "./data_import_examples/data_import_examples/FAS_
 litters_data = janitor::clean_names(litters_data)
 ```
 
+### Load in another dataset
+
 ```{r read in another dataset}
 fas_pups = read_csv(file = "./data_import_examples/data_import_examples/FAS_pups.csv")
+fas_pups = janitor::clean_names(fas_pups)
+```
+
+## Read in an excel file
+
+```{r}
+mlb11_data = read_excel(path = 
+                          "./data_import_examples/data_import_examples/mlb11.xlsx")
+```
+
+## Read in a SAS file
+
+```{r}
+pulse_data = haven::read_sas("./data_import_examples/data_import_examples/public_pulse_data.sas7bdat")
 ```
 
