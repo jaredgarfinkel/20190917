@@ -1,0 +1,21 @@
+---
+title: '20190917'
+author: "Jared Garfinkel"
+date: "9/17/2019"
+output: html_document
+---
+
+## Data Wrangling I
+
+```{r}
+library(tidyverse)
+```
+
+## Load in a dataset
+
+```{r}
+## reads in a dataset
+litters_data = read_csv(file = "./data_import_examples/data_import_examples/FAS_litters.csv")
+
+```
+
