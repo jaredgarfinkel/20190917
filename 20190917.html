@@ -380,7 +380,6 @@ summary {
 <pre><code>## -- Conflicts --------------------------------------------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>library(readxl)</code></pre>
 </div>
 <div id="load-in-a-dataset" class="section level2">
 <h2>Load in a dataset</h2>
@@ -397,10 +396,9 @@ litters_data = read_csv(file = &quot;./data_import_examples/data_import_examples
 ##   `Pups dead @ birth` = col_double(),
 ##   `Pups survive` = col_double()
 ## )</code></pre>
-<pre class="r"><code>litters_data = janitor::clean_names(litters_data)</code></pre>
-<div id="load-in-another-dataset" class="section level3">
-<h3>Load in another dataset</h3>
-<pre class="r"><code>fas_pups = read_csv(file = &quot;./data_import_examples/data_import_examples/FAS_pups.csv&quot;)</code></pre>
+<pre class="r"><code>litters_data = janitor::clean_names(litters_data)
+
+fas_pups = read_csv(file = &quot;./data_import_examples/data_import_examples/FAS_pups.csv&quot;)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   `Litter Number` = col_character(),
@@ -411,20 +409,6 @@ litters_data = read_csv(file = &quot;./data_import_examples/data_import_examples
 ##   `PD walk` = col_double()
 ## )</code></pre>
 <pre class="r"><code>fas_pups = janitor::clean_names(fas_pups)</code></pre>
-</div>
-</div>
-<div id="read-in-an-excel-file" class="section level2">
-<h2>Read in an excel file</h2>
-<pre class="r"><code>mlb11_data = read_excel(path = 
-                          &quot;./data_import_examples/data_import_examples/mlb11.xlsx&quot;)</code></pre>
-</div>
-<div id="read-in-a-sas-file" class="section level2">
-<h2>Read in a SAS file</h2>
-<pre class="r"><code>pulse_data = haven::read_sas(&quot;./data_import_examples/data_import_examples/public_pulse_data.sas7bdat&quot;)</code></pre>
-</div>
-<div id="export-a-file" class="section level2">
-<h2>Export a file</h2>
-<pre class="r"><code>write_csv(mlb11_data, path = &quot;.data_import_examples/data_import_examples/mlb11_data&quot;)</code></pre>
 </div>
 
 
