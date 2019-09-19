@@ -80,3 +80,51 @@ drop_na(litters_data, gd0_weight)
 # group == "Con7" & gd_of_birth == 20 
 ```
 
+## Mutating!!
+
+```{r mutating}
+mutate(
+  litters_data, 
+  wt_gain = gd18_weight - gd0_weight,
+  group = str_to_lower(group))
+```
+
+## Arrange
+
+```{r}
+arrange(litters_data, pups_born_alive)
+
+arrange(litters_data, desc(pups_born_alive))
+
+arrange(litters_data, pups_born_alive, gd0_weight)
+```
+
+## Pipes
+
+Create a collection of commands
+
+```{r}
+litters_data =
+  read_csv(file = "./data_import_examples/data_import_examples/FAS_litters.csv") %>% 
+  janitor::clean_names() %>% 
+  select(-pups_survive) %>% 
+  mutate(
+    wt_gain = gd18_weight - gd0_weight,
+    group = str_to_lower(group)) %>% 
+  drop_na(gd0_weight)
+```
+
+```{r, eval = FALSE}
+litteres_data %>% view()
+
+litters_data %>% pull(gd0_weight) %>% mean
+```
+
+```{r, eval = FALSE}
+litters_data = 
+  read_csv(file = "./data_import_examples/data_import_examples/FAS_litters.csv") %>% 
+  janitor::clean_names(dat = .) %>% 
+  select(.data = ., -pups_survive) %>% 
+  lm(gd0_weight ~ gd18_weight, data = .)
+```
+
