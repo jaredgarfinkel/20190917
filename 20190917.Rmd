@@ -21,3 +21,25 @@ litters_data = janitor::clean_names(litters_data)
 fas_pups = read_csv(file = "./data_import_examples/data_import_examples/FAS_pups.csv")
 fas_pups = janitor::clean_names(fas_pups)
 ```
+
+## Selecting
+
+```{r manipulation}
+select(litters_data, group, litter_number)
+
+select(litters_data, group, litter_number, gd0_weight)
+
+select(litters_data, litter_number, gd0_weight, starts_with("pups"))
+
+select(litters_data, litter_number, group, everything())
+
+select(litters_data, -group)
+
+select(litters_data, litter_number, gd0_weight:pups_born_alive)
+
+select(litters_data, GROUP = group, litter_number)
+
+rename(litters_data, Group = group)
+
+```
+
