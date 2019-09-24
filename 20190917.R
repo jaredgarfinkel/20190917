@@ -12,3 +12,4 @@ mlb11_data = read_excel(path = "./data_import_examples/data_import_examples/mlb1
 view(mlb11_data)
 pulse_data = haven::read_sas("./data_import_examples/data_import_examples/public_pulse_data.sas7bdat")
 view(pulse_data)
+install.packages("tidyr")
