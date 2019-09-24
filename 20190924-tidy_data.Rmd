@@ -1,0 +1,75 @@
+---
+title: '20190917'
+author: "Jared Garfinkel"
+date: "9/17/2019"
+output: html_document
+---
+
+## Data Wrangling I
+
+```{r setup}
+library(tidyverse)
+```
+
+## Wide to long
+
+```{r}
+pulse_data = 
+  haven::read_sas("./data_import_examples/data_import_examples/public_pulse_data.sas7bdat") %>%
+  janitor::clean_names() %>% 
+  pivot_longer(
+    cols = bdi_score_bl:bdi_score_12m,
+    names_to = "visit",
+    names_prefix = "bdi_score_",
+    values_to = "bdi") %>% 
+  mutate(
+    visit = recode(visit, "bl" = "00m")
+  )
+  
+```
+```{r}
+litters_data =
+  read_csv("./data_import_examples/data_import_examples/FAS_litters.csv") %>% 
+  janitor::clean_names() %>% 
+  separate(col = group, into = c("dose", "day_of_tx"), 3)
+
+```
+
+```{r}
+analysis_result = tibble(
+  group = c("treatment", "treatment", "placebo", "placebo"),
+  time = c("pre", "post", "pre", "post"),
+  mean = c(4, 8, 3.5, 4)
+)
+
+pivot_wider(
+  analysis_result,
+  names_from = time,
+  values_from = mean
+)
+```
+
+```{r}
+fellowship_ring = 
+  readxl::read_excel("./data_import_examples/data_import_examples/LotR_Words.xlsx", range = "B3:D6") %>%
+  mutate(movie = "fellowship_ring")
+
+two_towers = 
+  readxl::read_excel("./data_import_examples/data_import_examples/LotR_Words.xlsx", range = "F3:H6") %>%
+  mutate(movie = "two_towers")
+
+return_king = 
+  readxl::read_excel("./data_import_examples/data_import_examples/LotR_Words.xlsx", range = "J3:L6") %>%
+  mutate(movie = "return_king")
+
+lotr_data =
+  bind_rows(fellowship_ring, two_towers, return_king) %>% 
+  janitor::clean_names() %>% 
+  pivot_longer(
+    female:male, 
+    names_to = "sex",
+    values_to = "words"
+  ) %>% 
+  select(movie, race, sex, words)
+```
+
